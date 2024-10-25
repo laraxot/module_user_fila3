@@ -18,8 +18,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Modules\UI\Enums\TableLayoutEnum;
 
 /**
  * Manages the relationship between users and tenants.
@@ -34,9 +32,9 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Set up the form schema for tenant relations.
      *
-     * @param Form $form The form instance for configuration.
+     * @param Form $form the form instance for configuration
      *
-     * @return Form Configured form instance.
+     * @return Form configured form instance
      */
     public function form(Form $form): Form
     {
@@ -52,9 +50,9 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Set up the table schema and functionality for tenants.
      *
-     * @param Table $table The table instance for configuration.
+     * @param Table $table the table instance for configuration
      *
-     * @return Table Configured table instance.
+     * @return Table configured table instance
      */
     public function table(Table $table): Table
     {
@@ -73,7 +71,7 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Define table columns for displaying tenant information.
      *
-     * @return array<int, TextColumn> Configured table columns.
+     * @return array<int, TextColumn> configured table columns
      */
     protected function getTableColumns(): array
     {
@@ -96,7 +94,7 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Define filters for the table.
      *
-     * @return array<int, Filter> Configured table filters.
+     * @return array<int, Filter> configured table filters
      */
     protected function getTableFilters(): array
     {
@@ -111,7 +109,7 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Define header actions for the table.
      *
-     * @return array<int, Action> Configured header actions.
+     * @return array<int, Action> configured header actions
      */
     protected function getTableHeaderActions(): array
     {
@@ -126,7 +124,7 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Define row actions for each tenant record.
      *
-     * @return array<int, Action> Configured row actions.
+     * @return array<int, Action> configured row actions
      */
     protected function getTableActions(): array
     {
@@ -156,7 +154,7 @@ final class TenantsRelationManager extends RelationManager
     /**
      * Define bulk actions for the table.
      *
-     * @return array<int, BulkAction> Configured bulk actions.
+     * @return array<int, BulkAction> configured bulk actions
      */
     protected function getTableBulkActions(): array
     {
