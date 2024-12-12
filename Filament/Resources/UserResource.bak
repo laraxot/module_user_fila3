@@ -98,12 +98,10 @@ class UserResource extends Resource {
                     ->form([
                         Forms\Components\TextInput::make('new_password')
                             ->password()
-                            
                             ->required()
                             ->rule(Password::default()),
                         Forms\Components\TextInput::make('new_password_confirmation')
                             ->password()
-                            
                             ->rule('required', fn ($get) => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])

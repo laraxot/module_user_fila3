@@ -249,9 +249,12 @@ class Utils
 
     public static function getResourcePermissionPrefixes(string $resourceFQCN): array
     {
-        return static::doesResourceHaveCustomPermissions($resourceFQCN)
+        $res = static::doesResourceHaveCustomPermissions($resourceFQCN)
             ? $resourceFQCN::getPermissionPrefixes()
             : static::getGeneralResourcePermissionPrefixes();
+        Assert::isArray($res);
+
+        return $res;
     }
 
     public static function getRoleModel(): string

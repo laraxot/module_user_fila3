@@ -75,19 +75,12 @@ class PermissionResource extends XotBaseResource
                                 Grid::make(2)->schema(
                                     [
                                         TextInput::make('name'),
+                                        TextInput::make('name'),
                                         Select::make('guard_name')
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
                                             ->options($guard_names)
                                             ->default($default_guard_name),
                                         Select::make('roles')
                                             ->multiple()
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
                                             ->relationship('roles', 'name')
                                             ->preload($preload_roles),
                                     ]
@@ -106,22 +99,11 @@ class PermissionResource extends XotBaseResource
             ->columns(
                 [
                     TextColumn::make('id')
-<<<<<<< HEAD
                         ->searchable(),
                     TextColumn::make('name')
                         ->searchable(),
                     TextColumn::make('guard_name')
                         ->toggleable(isToggledHiddenByDefault: $isToggledHiddenByDefault)
-=======
-
-                        ->searchable(),
-                    TextColumn::make('name')
-
-                        ->searchable(),
-                    TextColumn::make('guard_name')
-                        ->toggleable(isToggledHiddenByDefault: $isToggledHiddenByDefault)
-
->>>>>>> origin/dev
                         ->searchable(),
                 ]
             )
@@ -146,8 +128,7 @@ class PermissionResource extends XotBaseResource
                             }
                         });
                     }),
-                */
-                ]
+                */]
             )->actions(
                 [
                     EditAction::make(),
@@ -163,7 +144,7 @@ class PermissionResource extends XotBaseResource
                         ->action(
                             static function (Collection $collection, array $data): void {
                                 foreach ($collection as $record) {
-                                    Assert::isInstanceOf($record, Permission::class, '['.__LINE__.']['.__CLASS__.']');
+                                    Assert::isInstanceOf($record, Permission::class, '[' . __LINE__ . '][' . __CLASS__ . ']');
                                     $record->roles()->sync($data['role']);
                                     $record->save();
                                 }
@@ -172,10 +153,6 @@ class PermissionResource extends XotBaseResource
                         ->form(
                             [
                                 Select::make('role')
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
                                     ->options(Role::query()->pluck('name', 'id'))
                                     ->required(),
                             ]
@@ -196,7 +173,7 @@ class PermissionResource extends XotBaseResource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) static::getModel()::count();
+        return number_format(static::getModel()::count(), 0);
     }
 
     public static function getPages(): array

@@ -21,13 +21,14 @@ class PrivacyPolicy extends Component
     public function render(): View
     {
         Assert::string($policyFile = TenantService::localizedMarkdownPath('policy.md'), 'wip');
-
-        $view = view(
-            'filament-jet::livewire.privacy-policy',
-            [
-                'terms' => Str::markdown(file_get_contents($policyFile)),
-            ]
-        );
+        /**
+         * @phpstan-var view-string
+         */
+        $view_name = 'filament-jet::livewire.privacy-policy';
+        $view_params = [
+            'terms' => Str::markdown(file_get_contents($policyFile)),
+        ];
+        $view = view($view_name, $view_params);
 
         $view->layout(
             'filament::components.layouts.base',

@@ -54,6 +54,9 @@ class Login extends Component
         app(ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
         app(ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
+        /**
+         * @phpstan-var view-string
+         */
         $view = 'pub_theme::livewire.auth.login';
 
         return view($view)

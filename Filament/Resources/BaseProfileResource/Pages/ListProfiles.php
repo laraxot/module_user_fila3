@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
-use Filament\Actions;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\IconColumn;
@@ -40,19 +39,8 @@ class ListProfiles extends XotBaseListRecords
     {
         return [
             Stack::make([
-<<<<<<< HEAD
-                // 'type' => TextColumn::make('type')
-                //     ->sortable(),
 
                 'user_name' => TextColumn::make('user.name')
-=======
-                'type' => TextColumn::make('type')
-
-                    ->sortable(),
-
-                'user_name' => TextColumn::make('user.name')
-
->>>>>>> origin/dev
                     ->sortable()
                     ->searchable()
                     ->default(
@@ -75,7 +63,6 @@ class ListProfiles extends XotBaseListRecords
                         }
                     ),
                 'first_name' => TextColumn::make('first_name')
-<<<<<<< HEAD
                     ->sortable()
                     ->searchable(),
                 'last_name' => TextColumn::make('last_name')
@@ -85,21 +72,6 @@ class ListProfiles extends XotBaseListRecords
                     ->sortable()
                     ->searchable(),
                 'is_active' => IconColumn::make('is_active')
-=======
-
-                    ->sortable()
-                    ->searchable(),
-                'last_name' => TextColumn::make('last_name')
-
-                    ->sortable()
-                    ->searchable(),
-                'email' => TextColumn::make('email')
-
-                    ->sortable()
-                    ->searchable(),
-                'is_active' => IconColumn::make('is_active')
-
->>>>>>> origin/dev
                     ->boolean(),
                 'photo' => SpatieMediaLibraryImageColumn::make('photo')
                     ->collection('profile'),
@@ -110,19 +82,7 @@ class ListProfiles extends XotBaseListRecords
     public function getListTableColumns(): array
     {
         return [
-<<<<<<< HEAD
-            // 'type' => TextColumn::make('type')
-            //     ->sortable(),
-
             'user_name' => TextColumn::make('user.name')
-=======
-            'type' => TextColumn::make('type')
-
-                ->sortable(),
-
-            'user_name' => TextColumn::make('user.name')
-
->>>>>>> origin/dev
                 ->sortable()
                 ->searchable()
                 ->default(
@@ -154,7 +114,6 @@ class ListProfiles extends XotBaseListRecords
                     }
                 ),
             'first_name' => TextColumn::make('first_name')
-<<<<<<< HEAD
                 ->sortable()
                 ->searchable(),
             'last_name' => TextColumn::make('last_name')
@@ -164,21 +123,6 @@ class ListProfiles extends XotBaseListRecords
                 ->sortable()
                 ->searchable(),
             'is_active' => IconColumn::make('is_active')
-=======
-
-                ->sortable()
-                ->searchable(),
-            'last_name' => TextColumn::make('last_name')
-
-                ->sortable()
-                ->searchable(),
-            'email' => TextColumn::make('email')
-
-                ->sortable()
-                ->searchable(),
-            'is_active' => IconColumn::make('is_active')
-
->>>>>>> origin/dev
                 ->boolean(),
             'photo' => SpatieMediaLibraryImageColumn::make('photo')
                 ->collection('profile'),
@@ -197,11 +141,6 @@ class ListProfiles extends XotBaseListRecords
         return [
             ChangeProfilePasswordAction::make(),
             ...parent::getTableActions(),
-            /*
-            Tables\Actions\EditAction::make()->label('')->tooltip(__('ui::txt.edit')),
-            Tables\Actions\ViewAction::make()->label('')->tooltip(__('ui::txt.view')),
-            Tables\Actions\DeleteAction::make()->label('')->tooltip(__('ui::txt.delete')),
-            */
         ];
     }
 
@@ -227,10 +166,6 @@ class ListProfiles extends XotBaseListRecords
             // ]),
             Tables\Actions\DeleteBulkAction::make(),
             BulkAction::make('bulk_activate')
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
                 ->action(
                     function (Collection $collection) {
                         $collection
@@ -238,7 +173,7 @@ class ListProfiles extends XotBaseListRecords
                             ->each
                             ->each(
                                 function ($user): void {
-                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.class_basename($this).']');
+                                    Assert::isInstanceOf($user, Model::class, '[' . __LINE__ . '][' . class_basename($this) . ']');
                                     $user->update(['is_active' => true]);
                                 }
                             );
@@ -246,10 +181,6 @@ class ListProfiles extends XotBaseListRecords
                 ),
 
             BulkAction::make('bulk_inactivate')
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
                 ->action(
                     function (Collection $collection) {
                         $collection
@@ -257,7 +188,7 @@ class ListProfiles extends XotBaseListRecords
                             ->each
                             ->each(
                                 function ($user): void {
-                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.class_basename($this).']');
+                                    Assert::isInstanceOf($user, Model::class, '[' . __LINE__ . '][' . class_basename($this) . ']');
                                     $user->update(['is_active' => true]);
                                 }
                             );
@@ -274,9 +205,10 @@ class ListProfiles extends XotBaseListRecords
                 ->trueLabel(static::trans('filters.is_active.active'))
                 ->falseLabel(static::trans('filters.is_active.inactive'))
                 ->queries(
-                    true: static fn (Builder $query) => $query->where('is_active', '=', true),
-                    false: static fn (Builder $query) => $query->where('is_active', '=', false),
-                ),
+                    true: static fn(Builder $query) => $query->where('is_active', '=', true),
+                    false: static fn(Builder $query) => $query->where('is_active', '=', false),
+                )
+                ->label(static::trans('fields.is_active')),
         ];
     }
 }

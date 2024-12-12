@@ -7,8 +7,9 @@ namespace Modules\User\Models;
 use Illuminate\Notifications\DatabaseNotification as BaseNotification;
 
 /**
- * @property \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
+ * 
  *
+ * @property \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
  * @method static \Illuminate\Notifications\DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static \Illuminate\Notifications\DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|Notification                    newModelQuery()
@@ -20,7 +21,6 @@ use Illuminate\Notifications\DatabaseNotification as BaseNotification;
  * @method static \Illuminate\Notifications\DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static \Illuminate\Notifications\DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static \Illuminate\Notifications\DatabaseNotificationCollection<int, static> get($columns = ['*'])
- *
  * @mixin \Eloquent
  */
 class Notification extends BaseNotification

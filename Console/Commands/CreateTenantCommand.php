@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use function Laravel\Prompts\text;
 
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class CreateTenantCommand extends Command
 {
@@ -52,7 +53,9 @@ class CreateTenantCommand extends Command
         $rows = $modelClass::get()->map($map);
 
         if (\count($rows) > 0) {
-            $headers = array_keys($rows[0]);
+            $first = $rows[0];
+            Assert::isArray($first);
+            $headers = array_keys($first);
 
             $this->newLine();
             $this->table($headers, $rows);

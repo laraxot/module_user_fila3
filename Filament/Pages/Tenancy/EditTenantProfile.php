@@ -7,6 +7,7 @@ namespace Modules\User\Filament\Pages\Tenancy;
 use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile as BaseEditTenantProfile;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class EditTenantProfile extends BaseEditTenantProfile
 {
@@ -19,7 +20,9 @@ class EditTenantProfile extends BaseEditTenantProfile
     {
         $resource = XotData::make()->getTenantResourceClass();
 
-        return $resource::form($form);
+        Assert::isInstanceOf($res = $resource::form($form), Form::class);
+
+        return $res;
         /*
         return $form
             ->schema([

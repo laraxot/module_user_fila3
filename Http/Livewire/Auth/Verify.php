@@ -29,8 +29,12 @@ class Verify extends Component
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::livewire.auth.verify', 'pub_theme::livewire.auth.verify');
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
+        /**
+         * @phpstan-var view-string
+         */
+        $view = 'pub_theme::livewire.auth.verify';
 
-        return view('pub_theme::livewire.auth.verify')
+        return view($view)
             ->extends('pub_theme::layouts.auth');
     }
 }

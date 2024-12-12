@@ -7,6 +7,7 @@ namespace Modules\User\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class ShowUserListCommand extends Command
 {
@@ -38,7 +39,8 @@ class ShowUserListCommand extends Command
         $rows = $modelClass::get()->map($map);
 
         if (\count($rows) > 0) {
-            $headers = array_keys($rows[0]);
+            Assert::isArray($first = $rows[0]);
+            $headers = array_keys($first);
 
             $this->newLine();
             $this->table($headers, $rows);
