@@ -19,6 +19,7 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
+ *
  * @method static ModelHasRoleFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
@@ -32,10 +33,14 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedBy($value)
+ *
  * @property string $uuid (DC2Type:guid)
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUuid($value)
+ *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

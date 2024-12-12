@@ -109,7 +109,7 @@ class PermissionResource extends XotBaseResource
             )
             ->filters(
                 [
-                    /*
+                /*
                 Filter::make('models')
                     ->form(function () {
                         $commands = new \Modules\User\Filament\Commands\Permission();
@@ -144,7 +144,7 @@ class PermissionResource extends XotBaseResource
                         ->action(
                             static function (Collection $collection, array $data): void {
                                 foreach ($collection as $record) {
-                                    Assert::isInstanceOf($record, Permission::class, '[' . __LINE__ . '][' . __CLASS__ . ']');
+                                    Assert::isInstanceOf($record, Permission::class, '['.__LINE__.']['.__CLASS__.']');
                                     $record->roles()->sync($data['role']);
                                     $record->save();
                                 }
