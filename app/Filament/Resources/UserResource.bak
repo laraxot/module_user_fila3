@@ -1,0 +1,71 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\User\Filament\Resources;
+
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables\Table;
+use Filament\Tables;
+use Illuminate\Validation\Rules\Password;
+use Modules\User\Filament\Resources\UserResource\Pages;
+use Modules\User\Filament\Resources\UserResource\RelationManagers;
+use Modules\User\Models\Role;
+
+
+
+class UserResource extends \Modules\Xot\Filament\Resources\XotBaseResource {
+
+    protected static ?string $model = \Modules\Xot\Datas\XotData::make()->getUserClass();
+
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    public static function getFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->required()
+                    ->maxLength(255)
+                    ->unique(),
+                // Forms\Components\DateTimePicker::make('email_verified_at'),
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->required()
+                    ->maxLength(255)
+                    ->rule(Password::default()),
+                /*
+                Forms\Components\TextInput::make('role_id')
+                    ->required(),
+                Forms\Components\TextInput::make('display_name')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('phone_number')
+                    ->tel()
+                    ->maxLength(255),
+                Forms\Components\DateTimePicker::make('phone_verified_at'),
+                Forms\Components\TextInput::make('photo')
+                    ->maxLength(255),
+                    */
+        ]; 
+    }
+
+    
+    public static function getRelations(): array {
+        return [
+            RelationManagers\TeamsRelationManager::class,
+        ];
+    }
+
+    public static function getPages(): array {
+        return [
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            // 'edit' => Pages\EditUser::route('/{record}/edit'),
+        ];
+    }
+}
